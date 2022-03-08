@@ -41,3 +41,8 @@
 # b = a
 # b.sort()
 # print(a)
+a = [[1, 2], [2, 3]]
+
+for i in range(0, len(a)):
+    for j in range(0, len(a[i])):
+        print(i, j)

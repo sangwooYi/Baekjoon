@@ -25,7 +25,6 @@ def count_require_days(a, b, goal):
     if res:
         days += 1
     return days + 1
-
-A, B, V = map(int, input().split())
+ㅠㅁ다.A, B, V = map(int, input().split())
 answer = count_require_days(A, B, V)
 print(answer)
