@@ -42,9 +42,35 @@
 # b.sort()
 # print(a)
 
+# 여기엔 인덱스 값이 들어감
+def swap(a, idx1, idx2):
+    temp = a[idx1]
+    a[idx1] = a[idx2]
+    a[idx2] = temp
 
-def find_max(a, b):
-    if a > b:
-        return a
-    return b
-print(find_max(11, 5))
+
+def quickSort(arr, left, right):
+    pl = left
+    pr = right
+    pv = arr[(pl + pr) // 2]
+    while pl <= pr:
+        while arr[pl] < pv:
+            pl += 1
+        while arr[pr] > pv:
+            pr -= 1
+        # 아직 범위가 유효할때만
+        if (pl <= pr):
+            # 바꾸고나서 한번 더이 동
+            swap(arr, pl, pr)
+            pl += 1
+            pr -= 1
+    # 위에서 while문 벗어났으면 이미 pl > pr 인 상황
+    if left < pr:
+        quickSort(arr, left, pr)
+    if pl < right:
+        quickSort(arr, pl, right)
+
+ar = [-11, 9, 5, 3, 2, 5, 7, 15, 2]
+
+for i in range(3, -1, -1):
+    print(i)
