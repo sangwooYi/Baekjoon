@@ -70,7 +70,30 @@ def quickSort(arr, left, right):
     if pl < right:
         quickSort(arr, pl, right)
 
-ar = [-11, 9, 5, 3, 2, 5, 7, 15, 2]
 
-for i in range(3, -1, -1):
-    print(i)
+class Stack:
+    def __init__(self, capacity):
+        self.max = capacity
+        self.stk = [0] * self.max
+        self.data = 0
+        self.ptr = 0
+
+    def push(self, x):
+        if self.data >= self.max:
+            raise IndexError
+        self.stk[self.ptr] = x
+        self.data += 1
+        self.ptr += 1
+        return x
+
+    def pop(self):
+        if self.data <= 0:
+            raise IndexError
+        self.ptr -= 1
+        now = self.stk[self.ptr]
+        self.data -= 1
+        return now
+
+    def is_empty(self):
+        return self.data <= 0
+
