@@ -97,3 +97,55 @@ class Stack:
     def is_empty(self):
         return self.data <= 0
 
+
+"""
+이분 탐색에서, 단순히 찾는것 외에
+lower bound upper bound 자체도 구현이 가능해야한다.
+"""
+
+# 그냥 특정 값을 찾는 경우
+def binarySearch(arr, key):
+    pl = arr[0]
+    pr = arr[len(arr) - 1]
+    while pl <= pr:
+        pc = (pl + pr) // 2
+        if arr[pc] == key:
+            return pc
+        elif arr[pc] > key:
+            pr = pc - 1
+        else:
+            pl = pc + 1
+
+def upperBound(arr, key):
+    pl = arr[0]
+    pr = arr[len(arr) - 1]
+    # upperBound, lowerBound는 pl == pr이 같아지는 순간 종료한다.
+    while pl < pr:
+        pc = (pl + pr) // 2
+        # upperBound의 경우는 key값에 비해 현재 pc 위치의 값이 큰 경우에만 pr 줄인다. 
+        if arr[pc] > key:
+            pr = pc
+        # arr[pc] == key 인 경우에도 pl을 움직인다.
+        else:
+            pl = pc + 1 
+    return pl
+
+# arr[pc] == key일때 pr 을 움직이는게 lower bound
+# arr[pc] == key일때 pl을 움직이는게 upper bound
+def lowerBound(arr, key):
+    pl = arr[0]
+    pr = arr[len(arr) - 1]
+    while pl < pr:
+        pc = (pl + pr) // 2
+        if arr[pc] >= key:
+            pr = pc
+        else:
+            pl = pc + 1
+
+# 위와 같이 코드 짜게 되면
+# lower bound 의 경우는 정말 해당 값이 존재하는 가장 낮은 인덱스값에서 멈추고
+# upper bound는 해당 값지 존재하는 가장 높은 인덱스 바로 다음 인덱스에서 멈춘다!
+# 위와 같이 코드 짜는거 명심, upperbound는 실제 값 자체가 필요하면 인데스 1 빼주는거 
+
+# 근데 존재하지 않는 경우가지 따져야 하므로 그냥 upperBound의 인덱스 - lowerBound의 인덱스로 간다.
+# 값이 없는 경우는 upperbound 인덱스 == lowerbound인덱스 가 되므로! (직접 그려보면 된다.)
