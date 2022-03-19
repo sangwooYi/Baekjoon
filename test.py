@@ -149,4 +149,12 @@ def lowerBound(arr, key):
 
 # 근데 존재하지 않는 경우가지 따져야 하므로 그냥 upperBound의 인덱스 - lowerBound의 인덱스로 간다.
 # 값이 없는 경우는 upperbound 인덱스 == lowerbound인덱스 가 되므로! (직접 그려보면 된다.)
-
+def find_max(a, b, c):
+    if a >= b:
+        if a >= c:
+            return a
+        return c
+    else:
+        if b >= c:
+            return b
+        return c
