@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("baek1676.txt")
+# import sys
+# sys.stdin = open("baek1676.txt")
 
 
 def factorial(n):
@@ -20,4 +20,8 @@ for i in range(len(facto_res)-1, -1, -1):
     else:
         break
 print(ans)
+
+
+
+
 
