@@ -158,6 +158,3 @@ def find_max(a, b, c):
         if b >= c:
             return b
         return c
-
-
-print(3**12)
