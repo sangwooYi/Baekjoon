@@ -35,58 +35,62 @@ class Queue:
     def isEmpty(self):
         return self.data <= 0
 
-# 내 풀이.. 왜 안되는지 꼭 알아내자
-# def min_time(n, k):
-#     que = Queue(1000000)
-#     que.enqueue((n, 0))
-#     while True:
-#         now = que.dequeue()
-#         num = now[0]
-#         path = now[1]
-#         if num > 100000:
-#             continue
-#         if DP[num] <= path:
-#             continue
-#         DP[num] = path
-#         if num == k:
-#             return DP[k]
-#         if num >= 1:
-#             que.enqueue((num-1, path+1))
-#         if num < 100000:
-#             que.enqueue((num+1, path+1))
-#         if num*2 <= 100000:
-#             que.enqueue((num*2, path+1))
+
+def min_time(n, k):
+    que = Queue(1000000)
+    que.enqueue((n, 0))
+    while True:
+        now = que.dequeue()
+        num = now[0]
+        path = now[1]
+        if num > 100000:
+            continue
+        if DP[num] <= path:
+            continue
+        DP[num] = path
+        if num == k:
+            return DP[k]
+        if num >= 1:
+            que.enqueue((num-1, path+1))
+        if num < 100000:
+            que.enqueue((num+1, path+1))
+        if num*2 <= 100000:
+            que.enqueue((num*2, path+1))
     
-
-# N, K = map(int, input().split())
-# INF = 99999
-# DP = [INF] * 100001
-# ans = min_time(N, K)
-# print(ans)
-
-def bfs(a, b):
-    if b < 0 or b > 100000:
-        return
-    # 아직 방문 안했거나, 이동되서 온 값이 현재 저장값보다 작을 떄
-    if (visit[b] == 0) or (visit[a]+1 < visit[b]):
-        visit[b] = visit[a] + 1
-        que.enqueue(b)
 
 N, K = map(int, input().split())
 INF = 99999
-visit = [0] * 100001
-result = 0
-que = Queue(100000)
-que.enqueue(N)
+DP = [INF] * 100001
+if N <= K:
+    ans = min_time(N, K)
+# 이경우에는 거꾸로 가는 방법밖에 없다!
+else:
+    ans = (N-K)
+print(ans)
 
-while not que.isEmpty():
-    current = que.dequeue()
+# def bfs(a, b):
+#     if b < 0 or b > 100000:
+#         return
+#     # 아직 방문 안했거나, 이동되서 온 값이 현재 저장값보다 작을 떄
+#     if (visit[b] == 0) or (visit[a]+1 < visit[b]):
+#         visit[b] = visit[a] + 1
+#         que.enqueue(b)
 
-    if current == K:
-        result = visit[current]
-        break
-    bfs(current, current+1)
-    bfs(current, current-1)
-    bfs(current, current*2)
+# N, K = map(int, input().split())
+# INF = 99999
+# visit = [0] * 100001
+# result = 0
+# que = Queue(100000)
+# que.enqueue(N)
 
-print(result)
+# while not que.isEmpty():
+#     current = que.dequeue()
+
+#     if current == K:
+#         result = visit[current]
+#         break
+#     bfs(current, current+1)
+#     bfs(current, current-1)
+#     bfs(current, current*2)
+
+# print(result)
