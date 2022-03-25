@@ -40,7 +40,13 @@
 #     print(count[i])
 
 
+# N = int(input())
+# for i in range(1, 10):
+#     mult = N*i
+#     print(N, "*", i, "=", mult)
+
 N = int(input())
-for i in range(1, 10):
-    mult = N*i
-    print(N, "*", i, "=", mult)
+if ((N % 4 == 0) and (N % 100 !=  0)) or N % 400 == 0:
+    print(1)
+else:
+    print(0)
