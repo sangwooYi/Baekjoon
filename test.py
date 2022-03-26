@@ -158,3 +158,6 @@ def find_max(a, b, c):
         if b >= c:
             return b
         return c
+# 파이선 for문은 아래와같이 작성하면 에러발생은 안하고 그냥 동작을 안함
+for i in range(4, 2):
+    print(i)
