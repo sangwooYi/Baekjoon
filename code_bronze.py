@@ -50,3 +50,18 @@ if ((N % 4 == 0) and (N % 100 !=  0)) or N % 400 == 0:
     print(1)
 else:
     print(0)
+
+
+N, M = map(int, input().split())
+hour = N
+if M >= 45:
+    minute = M-45
+else:
+    sub = (45-M)
+    if hour == 0:
+        hour = 23
+    else:
+        hour = N-1
+    minute = (60-sub)
+print(hour, end=" ")
+print(minute)
