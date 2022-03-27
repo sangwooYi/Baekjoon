@@ -65,3 +65,24 @@ else:
     minute = (60-sub)
 print(hour, end=" ")
 print(minute)
+
+
+
+nums = list(map(int, input().split()))
+
+asc_flag = True
+dsc_flag = True
+for i in range(0, len(nums)):
+    if not asc_flag and not dsc_flag:
+        break
+    if i+1 != nums[i]:
+        asc_flag = False
+    if 8-i != nums[i]:
+        dsc_flag = False
+
+if asc_flag:
+    print("ascending")
+elif dsc_flag:
+    print("descending")
+else:
+    print("mixed")
