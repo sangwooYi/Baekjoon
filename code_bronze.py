@@ -86,3 +86,29 @@ elif dsc_flag:
     print("descending")
 else:
     print("mixed")
+
+
+mods = []
+for i in range(0, 10):
+    num = int(input())
+    mod = num % 42
+    if i == 0:
+        mods.append(mod)
+    else:
+        if mod in mods:
+            continue
+        mods.append(mod)
+print(len(mods))
+
+N = int(input())
+for i in range(0, N):
+    quiz = list(input())
+    total = 0
+    score = 0
+    for j in range(0, len(quiz)):
+        if quiz[j] == "O":
+            score += 1
+            total += score
+        elif quiz[j] == "X":
+            score = 0
+    print(total)
