@@ -149,15 +149,42 @@ def lowerBound(arr, key):
 
 # 근데 존재하지 않는 경우가지 따져야 하므로 그냥 upperBound의 인덱스 - lowerBound의 인덱스로 간다.
 # 값이 없는 경우는 upperbound 인덱스 == lowerbound인덱스 가 되므로! (직접 그려보면 된다.)
-def find_max(a, b, c):
-    if a >= b:
-        if a >= c:
-            return a
-        return c
-    else:
-        if b >= c:
-            return b
-        return c
-# 파이선 for문은 아래와같이 작성하면 에러발생은 안하고 그냥 동작을 안함
-for i in range(4, 2):
-    print(i)
+# def find_max(a, b, c):
+#     if a >= b:
+#         if a >= c:
+#             return a
+#         return c
+#     else:
+#         if b >= c:
+#             return b
+#         return c
+# # 파이선 for문은 아래와같이 작성하면 에러발생은 안하고 그냥 동작을 안함
+# for i in range(4, 2):
+#     print(i)
+
+# A ~ Z 65 부터 90,  a ~ z  97 부터 122
+# alph = input()
+# check = [-1] * 26
+# for i in range(0, len(alph)):
+#     conv = ord(alph[i]) - 97
+#     # 아직 체크가 안된 애면
+#     if check[conv] == -1:
+#         check[conv] = i
+# for i in range(0, len(check)):
+#     if i == len(check)-1:
+#         print(check[i])
+#     else:
+#         print(check[i], end=" ")
+
+
+def operL(num):   
+    res = (num % 1000) * 10 + (num // 1000)
+    return res
+
+def operR(num):
+    res = (num % 10) * 1000 + (num // 10)
+    return res
+
+a = 1410
+
+print(operL(a), operR(a))
