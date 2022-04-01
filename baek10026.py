@@ -39,68 +39,64 @@ class Queue:
         return self.data <= 0
 
 
-def RGB(maps, n):
-    count = 1
+
+def RGB(arr, n):
     que = Queue(n*n)
-    # 상, 하, 좌, 우
+    visited = [[False] * n for _ in range(0, n)]
     dr = [-1, 1, 0, 0]
     dc = [0, 0, -1, 1]
-    visited = [[False] * N for _ in range(0, N)]
-    start = (0, 0)
-    visited[0][0] = True
-    que.enqueue(start)
+    que.enqueue((0, 0))
+    visited[0][0] = True    
+    count = 1
     while True:
         while not que.isEmpty():
             now = que.dequeue()
-            now_row = now[0]
-            now_col = now[1]
-            now_color = maps[now_row][now_col]
+            n_row = now[0]
+            n_col = now[1]
             for dir in range(0, 4):
-                next_row = now_row + dr[dir]
-                next_col = now_col + dc[dir]
+                next_row = n_row + dr[dir]
+                next_col = n_col + dc[dir]
+                # 영역 밖 pass
                 if next_row < 0 or next_col < 0 or next_row >= n or next_col >= n:
                     continue
+                # 이미 방문할떄 pass
                 if visited[next_row][next_col]:
                     continue
-                next = (next_row, next_col)
-                next_color = maps[next_row][next_col]
-                if next_color != now_color:
+                # 현재 탐색하려는 색과 다르면 pass
+                if arr[n_row][n_col] != arr[next_row][next_col]:
                     continue
-                # 같은색인 경우만 gogo
                 visited[next_row][next_col] = True
-                que.enqueue(next)
-        # 인접한 같은색깔을 전부 탐색한 후에 내부 while문 탈출
+                que.enqueue((next_row, next_col))
         flag = True
-        for i in range(0, n):
+        for row in range(0, n):
             if not flag:
                 break
-            for j in range(0, n):
-                if not visited[i][j]:
-                    # 아직 방문안한곳 찾으면 다른영역인것
+            for col in range(0, n):
+                if not visited[row][col]:
                     flag = False
-                    que.enqueue((i, j))
-                    visited[i][j] = True
+                    que.enqueue((row, col))
+                    visited[row][col] = True
+                    count += 1
                     break
-        # 전부 돈 경우, 그냥 값 return
         if flag:
             return count
-        count += 1
 
 
 N = int(input())
 MAP = [0] * N
-for i in range(0, N):
-    MAP[i] = list(input())
-
 # 적록색맹용
 MAP2 = [[0] * N for _ in range(0, N)]
 for i in range(0, N):
-    for j in range(0, N):
-        if MAP[i][j] == "G":
-            MAP2[i][j] = "R"
-        else:
-            MAP2[i][j] = MAP[i][j]
+    temp = list(input())
+    MAP[i] = temp
 
-answer = RGB(MAP, N)
-answer2 = RGB(MAP2, N)
-print(answer, answer2)
+for row in range(0, N):
+    for col in range(0, N):
+        if MAP[row][col] == "G":
+            MAP2[row][col] = "R"
+        else:
+            MAP2[row][col] = MAP[row][col]
+
+ans1 = RGB(MAP, N)
+ans2 = RGB(MAP2, N)
+print(f"{ans1} {ans2}")
