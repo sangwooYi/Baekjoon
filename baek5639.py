@@ -6,7 +6,13 @@ sys.stdin = open("baek5639.txt")
 모든 줄을 다 읽어와야하는 문제는 sys.stdin.readlines()로 받아올것!
 
 \n 이 개행 없애주는게 .rstrip() 인것!!
-sys.stdin.readline() 쓸때도 만약 \n 딸려나오는 상황이면 .rstrip() 붙옂주면 된다!
+sys.stdin.readline() 쓸때도 만약 \n 딸려나오는 상황이면 .rstrip() 붙여주면 된다!
+
+아이디어! 
+
+left = [0] * 10001
+right = [0] * 10001
+각각 n번노드의 왼쪽, 오른쪽 자식노드를 가리키도록\
 """
 
 
