@@ -25,3 +25,11 @@ for i in range(0, N):
     if max_num <= nums[i]:
         max_num = nums[i]
 print(f"{min_num} {max_num}")
+
+
+A, B = map(int, input().split())
+print(A+B)
+print(A-B)
+print(A*B)
+print(A//B)
+print(A%B)
