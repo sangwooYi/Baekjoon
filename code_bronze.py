@@ -33,3 +33,20 @@ print(A-B)
 print(A*B)
 print(A//B)
 print(A%B)
+
+N, X = map(int, input().split())
+nums = list(map(int, input().split()))
+answer = []
+for i in range(0, len(nums)):
+    if nums[i] < X:
+        answer.append(nums[i])
+for i in range(0, len(answer)):
+    if i == len(answer)-1:
+        print(answer[i])
+    else:
+        print(answer[i], end=" ")
+
+N = int(input())
+for i in range(0, N):
+    A, B = map(int, input().split())
+    print(A+B)
