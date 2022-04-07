@@ -177,14 +177,29 @@ def lowerBound(arr, key):
 #         print(check[i], end=" ")
 
 
-def operL(num):   
-    res = (num % 1000) * 10 + (num // 1000)
-    return res
+# def operL(num):   
+#     res = (num % 1000) * 10 + (num // 1000)
+#     return res
 
-def operR(num):
-    res = (num % 10) * 1000 + (num // 10)
-    return res
+# def operR(num):
+#     res = (num % 10) * 1000 + (num // 10)
+#     return res
 
-a = 1410
+# a = 1410
 
-print(operL(a), operR(a))
+# print(operL(a), operR(a))
+
+# def GCD(num1, num2) :
+#     if num2 == 0:
+#         return num1
+#     else : 
+#         return GCD(num2, num1 % num2)
+
+# print(GCD(20, 7))
+
+sum = 0
+N = int(input())
+nums = input()
+for i in range(0, N):
+    sum += int(nums[i])
+print(sum)

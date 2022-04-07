@@ -3,6 +3,23 @@ sys.stdin = open("baek16928.txt")
 
 """
 DFS + 가지치기 // BFS 둘다 가능할듯?
+일단 BFS로!
+
+1과 100번에는 사다리/뱀이 없다!
+사다리가 도착하는 칸은 중복될수 있답니다..
+출발하는 칸은 하나가 맞음 
+
+항상 중복을 조심하자!
+BFS, DFS 같은경우 항상 
+이게 가장 중요!!!
+DP 를 쓰던, visited를 쓰던 필요없는 중복을 방지해야한다!
+반례도 스스로 떠올릴수 있어야함!
+
+DFS 에서 특정 값을 찾을때 바로 return하면 안되는 경우도 존재!
+아래와같이 풀 수 있도록 주의할것
+
+이 문제도, 어차피 같은 수를 또 방문했다면 이미 최소가 아니므로,
+visited를 적용해야하는 문제!! + path 저장
 """
 
 class Queue:
@@ -43,35 +60,33 @@ class Queue:
 
 def snake_ladder_game(snake, ladder):
     
-    que = Queue(500000)
+    que = Queue(10000)
     # 현재위치, 주사위 횟수
     que.enqueue((1, 0))
-    if 1 in ladder.keys():
-        pos = ladder[1]
-        if pos == 100:
-            return 1
-        que.enqueue((pos, 1))
-
+    DP = [0] * (101)
+    visited = [False] * 101
+    
     while not que.is_empty():
         now = que.dequeue()
-        pos = now[0]
-        time = now[1]
-
+        num = now[0]
+        path = now[1]
         for i in range(1, 7):
-            next_pos = pos + i
-            if next_pos > 100:
+            next_num = num + i
+            if next_num > 100:
                 continue
-            if next_pos in snake.keys():
-                next_pos = snake[next_pos]
-                que.enqueue((next_pos, time+1))
-            else:
-                if next_pos in ladder.keys():
-                    next_pos = ladder[next_pos]
-                if next_pos == 100:
-                    return time+1
-                else:
-                    que.enqueue((next_pos, time+1))
-
+            # 방문했던곳을 다시 방문하는것도 필요없음(최소를 구하므로)
+            if visited[next_num]:
+                continue
+            if next_num in snake.keys():
+                next_num = snake[next_num]
+            elif next_num in ladder.keys():
+                next_num = ladder[next_num]
+            if visited[next_num]:
+                continue
+            visited[next_num] = True
+            DP[next_num] = path+1
+            que.enqueue((next_num, path+1))
+    return DP[100]
 
 
 N, M = map(int, input().split())
