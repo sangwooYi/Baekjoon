@@ -197,9 +197,15 @@ def lowerBound(arr, key):
 
 # print(GCD(20, 7))
 
-sum = 0
-N = int(input())
-nums = input()
-for i in range(0, N):
-    sum += int(nums[i])
-print(sum)
+# sum = 0
+# N = int(input())
+# nums = input()
+# for i in range(0, N):
+#     sum += int(nums[i])
+# print(sum)
+
+def check_pelindrome(arr):
+    for i in range(0, len(arr)):
+        if arr[i] != arr[len(arr)-1-i]:
+            return False
+    return True
