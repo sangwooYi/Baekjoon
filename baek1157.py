@@ -12,7 +12,7 @@ A ~ Z 는 65 ~ 90
 대문자 기준 65를 빼서 인덱스로 치환하여 저장 
 """
 
-INP =list(input())
+INP = list(input())
 count = [0] * 26 
 for i in range(0, len(INP)):
     alph = ord(INP[i])

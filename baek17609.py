@@ -28,6 +28,7 @@ def check_palindrome(arr):
             temp1 = arr[pl+1:pr+1]
             # pl ~ pr-1
             temp2 = arr[pl:pr]
+            # 어디를 pass해야 회문이 되는지 체크해야 한다.
             if is_palindrome(temp1):
                 flag = False
                 pl += 1
