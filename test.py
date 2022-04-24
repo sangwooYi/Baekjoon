@@ -70,34 +70,6 @@ def quickSort(arr, left, right):
     if pl < right:
         quickSort(arr, pl, right)
 
-
-class Stack:
-    def __init__(self, capacity):
-        self.max = capacity
-        self.stk = [0] * self.max
-        self.data = 0
-        self.ptr = 0
-
-    def push(self, x):
-        if self.data >= self.max:
-            raise IndexError
-        self.stk[self.ptr] = x
-        self.data += 1
-        self.ptr += 1
-        return x
-
-    def pop(self):
-        if self.data <= 0:
-            raise IndexError
-        self.ptr -= 1
-        now = self.stk[self.ptr]
-        self.data -= 1
-        return now
-
-    def is_empty(self):
-        return self.data <= 0
-
-
 """
 이분 탐색에서, 단순히 찾는것 외에
 lower bound upper bound 자체도 구현이 가능해야한다.
@@ -209,3 +181,47 @@ def check_pelindrome(arr):
         if arr[i] != arr[len(arr)-1-i]:
             return False
     return True
+
+
+class Stack:
+
+    def __init__(self, capacity):
+        self.max = capacity
+        self.stk = [0] * self.max
+        self.data = 0
+        self.ptr = 0
+    
+    def push(self, x):
+        if self.data >= self.max:
+            raise IndexError
+        self.stk[self.ptr] = x
+        self.data += 1
+        self.ptr += 1
+        return x
+    
+    def pop(self):
+        if self.data <= 0:
+            raise IndexError
+        self.ptr -= 1
+        self.data -= 1
+        now = self.stk[self.ptr]
+        return now
+    
+    def size_of(self):
+        return self.data
+
+    def peek(self):
+        if self.data <= 0:
+            raise IndexError
+        # 그냥 가장 top의 값만 보여줌
+        return self.stk[self.ptr-1]
+
+    def is_empty(self):
+        return self.data <= 0
+
+
+stk = Stack(100)
+stk.push(3)
+stk.push(2)
+stk.pop()
+print(stk.size_of())
