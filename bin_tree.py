@@ -1,6 +1,9 @@
 """
 완전 이진트리일때 구성 방법
 """
+import sys
+
+
 def make_bin_tree(node):
     tree = [[0] * 3 for _ in range(0, node+1)]
     for i in range(1, node//2+1):
