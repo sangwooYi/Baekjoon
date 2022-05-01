@@ -21,8 +21,9 @@ def dijkstra(start):
         if dist[node] < cost:
             continue
         for next_cost, next_node in graph[node]:
-            # 현재 저장된 값 이상의 값인경우 pass
-            if dist[next_node] < cost + next_cost:
+            # 현재 저장된 값 이상의 값인경우 pass, == 이라도 할 이유가 없다.. 이 조건 주의!
+            # 다익스트라 dist 배열 업데이트 조건은, 더 작은값이 올 때만!!!
+            if dist[next_node] <= cost + next_cost:
                 continue
             dist[next_node] = cost + next_cost    
             # 갱신될때마다 parent 업데이트
@@ -38,9 +39,9 @@ for i in range(0, M):
     # 어차피, 최솟값을 쓸거임
     graph[a].append((c, b))
 s, e = map(int, sys.stdin.readline().split())
-INF = 987654321
+INF = sys.maxsize
 parent = [i for i in range(0, N+1)]
-dist = [INF] * (N +1)
+dist = [INF] * (N+1)
 dijkstra(s)
 print(dist[e])
 path = [e]
