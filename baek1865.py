@@ -19,11 +19,15 @@ def worm_hole(graph, n, start):
     dis = [INF] * (n+1)
     dis[start] = 0
 
+    # n번을 반복하며,
     for i in range(0, n):
+        # 각 반복마다 모든 노드를 체크
         for s in range(1, n+1):
             for next_node, next_cost in graph[s]:
                 if dis[next_node] > dis[s] + next_cost:
+                    # 최솟값 발견될때마다 갱신
                     dis[next_node] = dis[s] + next_cost
+                    # 종료 조건
                     if i == n-1:
                         return True
     return False
