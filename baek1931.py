@@ -4,6 +4,18 @@ sys.stdin = open("baek1931.txt")
 """
 이 문제 꼭 기억하자!
 종료시간 기준으로 정렬!!!
+
+java에서 key=lambda는
+arr[i][1] 기준으로 내림차순 정렬, 같은 경우는 arr[i][1] 기준으로 내림차순 
+Arrays.sort(arr, new Comparator<int[]>()) {
+    @Override
+    public int compare(int[] o1, int[] o2) {
+        if (o1[1] == o2[1]) {
+            return o1[0] - o2[0]
+        } 
+        return o1[1] - o2[1]
+    }
+}
 """
 
 

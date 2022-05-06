@@ -1,5 +1,6 @@
 import sys
 sys.stdin = open("baek2638.txt")
+
 """
 녹는 치즈 조건
 4변중 2변 이상이 외부와 접촉
