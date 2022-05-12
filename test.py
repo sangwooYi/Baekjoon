@@ -219,9 +219,3 @@ class Stack:
     def is_empty(self):
         return self.data <= 0
 
-
-stk = Stack(100)
-stk.push(3)
-stk.push(2)
-stk.pop()
-print(stk.size_of())
