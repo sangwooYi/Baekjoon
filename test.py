@@ -219,3 +219,21 @@ class Stack:
     def is_empty(self):
         return self.data <= 0
 
+# 시계 방향 회전
+def rotate_clockwise(arr):
+    temp = arr[len(arr)-1]
+    for i in range(len(arr)-1, 0, -1):
+        arr[i] = arr[i-1]
+    arr[0] = temp
+
+# 반시계방향 회전
+def rotate_counter_clockwise(arr):
+    temp = arr[0]
+    for i in range(0, len(arr)-1):
+        arr[i] = arr[i+1]
+    arr[len(arr)-1] = temp
+
+a = [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]
+rotate_clockwise(a[0])
+print(a)
+# 바뀌네! 참조형 개꿀!
