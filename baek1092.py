@@ -15,7 +15,6 @@ def ship(arr, goods, n, m):
     # 화물 실었는지 체크 용
     visited = [False] * m
 
-    flag = False
     result = 0
     count = 0
     # 이게 포인트다!
