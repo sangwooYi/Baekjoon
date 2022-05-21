@@ -18,23 +18,25 @@ DFS / DP 같이 사용하는 문제임
 그 후에, 스택이 해제되면서 22 / 25번의 return값이
 적절하게 tmp 에 대입되게된다.
 
+이문제 꼭 다시 풀어볼것!
+아래코드가 내가 더 이해하기가 쉽다!
 """
 
 def dfs(arr, visited, row, col, m, n):
     if row == m-1 and col == n-1:
         return 1
-    if visited[row][col] != -1:
-        return visited[row][col]
-    visited[row][col] = 0
-    for i in range(0, 4):
-        next_row = row + dr[i]
-        next_col = col + dc[i]
-        if next_row < 0 or next_col < 0 or next_row >= m or next_col >= n:
-            continue
-        if arr[next_row][next_col] >= arr[row][col]:
-            continue
-        tmp = dfs(arr, visited, next_row, next_col, m, n)
-        visited[row][col] += tmp
+    if visited[row][col] == -1:
+        visited[row][col] = 0
+        for i in range(0, 4):
+            next_row = row + dr[i]
+            next_col = col + dc[i]
+            if next_row < 0 or next_col < 0 or next_row >= m or next_col >= n:
+                continue
+            if arr[next_row][next_col] >= arr[row][col]:
+                continue
+            # next_row, next_col 까지 몇가지 case가 이동 가능한지
+            tmp = dfs(arr, visited, next_row, next_col, m, n)
+            visited[row][col] += tmp
 
     # 위 for문이 끝나고 나서 거치게 될 부분
     return visited[row][col]
