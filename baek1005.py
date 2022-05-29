@@ -33,7 +33,7 @@ in_degree[next_node] == 0 이된다면.
 # 이부분이 추가된것! (다음 단계 건물을 지으려면, 그 건물에 진입하는 노드들이 모두 완료되어야 하는 조건이므로!)
 이 문제에서는, 여기서 DP[next_node] = max(DP[next_node], DP[now_node] + costs[next_node]) 
 
-
+5/29 (일) 에는 2637번 문제 풀어볼 것! (위상정렬 + DP 문제)
 """
 
 class Queue:
