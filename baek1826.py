@@ -19,6 +19,7 @@ def calc_stop_point(info, end, init):
     while point < end:
         if point + gas >= end:
             return count
+        # 이동 가능한 범위 내에서 전부 체크
         while info:
             now = info[0]
             #  내가 가진 연료량으로 이동 가능할 경우에만
