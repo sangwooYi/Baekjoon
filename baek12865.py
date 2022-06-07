@@ -15,6 +15,7 @@ for i in range(0, N):
 DP = [0] * (K+1)
 for i in range(0, len(items)):
     w, v = items[i]
+    # 무게 w ~ K까지 순회
     for j in range(K, w-1, -1):
         #  이런걸 혼자 생각할 수 있어야 한다 ㅠ
         DP[j] = max(DP[j], DP[j-w]+v)
