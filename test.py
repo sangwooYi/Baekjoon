@@ -233,7 +233,36 @@ def rotate_counter_clockwise(arr):
         arr[i] = arr[i+1]
     arr[len(arr)-1] = temp
 
-a = [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]]
-rotate_clockwise(a[0])
-print(a)
+a = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], ['A','B','C']]
+# rotate_clockwise(a[0])
+# print(a)
 # 바뀌네! 참조형 개꿀!
+
+# 데카르트 곱 case 실제로 만드는 방법! 꼭 기억하자
+# result = [[]]
+# 요거 그냥 itertools.product 알고리즘이랑 똑같음!
+# for pool in a:
+#     result = [x + [y] for x in result for y in pool]
+#     print(result)
+
+
+
+"""
+for pool in pool:
+    result = [x + [y] for x in result for y in pool]
+동작 원리!!!
+리스트는 가변길이 속성을 갖고 있ㅇ므ㅡ로
+[1] + [2] 는 파이썬에서 자동으로 [1, 2] 를 만들어준다.
+따라서 만약
+[[1, 2, 3], [4, 5, 6]] 을 위와같은 방식으로 돌린다면
+
+첫번째 loop 떄
+[] + 1,  [] + 2,  [] + 3
+result = [[1], [2], [3]] 이 된다
+다음 loop 때는
+[[1] + [4]], [[1] + [5]], [[1] + [6]] 이런식으로 모든 case가 데카르트곱으로 구해지는것
+248번째 줄에서 x 는 result에서의 요소(리스트 상태) 이며 각 x 경우 마다
+pool 리스트의 요소인 y가 [y] 형태로 더해져서 x 리스트의 y 요소가 더해진 형태의
+리스트가 요소로 생성되는것
+"""
+

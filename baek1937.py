@@ -39,7 +39,11 @@ def dfs(arr, row, col):
         if arr[next_row][next_col] <= arr[row][col]:
             continue
         # 현재 저장된 값 vs next_row, next_col에서 재귀돌렸을때 값+1
+        # 여기서 dfs(arr, next_row, next_col)에서 만약 위의 
+        # if DP[row][col]: return DP[row][col] 이 조건 없었으면 얘도 무조건 계속 재귀가 돌아 갈 것!
+        # 메모이제이션!!!!!
         DP[row][col] = max(DP[row][col], dfs(arr, next_row, next_col)+1)
+
     # 더이상 갈 곳없으면  return
     return DP[row][col]
 
@@ -56,11 +60,11 @@ dc = [0, 0, -1, 1]
 DP = [[0] * N for _ in range(0, N)]
 
 answer = 0
+# 시작점을 전부 돌려 보아야 한다.
 for i in range(0, N):
     for j in range(0, N):
+        # 여기서 dfs(MAP, i, j) 역시, 이미 가본 경로면 바로 return 됨
         answer = max(answer, dfs(MAP, i, j))
 
 print(answer)
 
-
-# 이 풀이가 보다 더 이해가 쉽다..
