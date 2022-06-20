@@ -42,10 +42,10 @@ for i in range(0, N):
     coord[i] = [x, y, i+1]
 check = [False] * N
 # 일단 간선 가중치부터 구해놓아야한다.
-# 이게 조합보다 훨씬 빠름!!! (why?조합은 재귀를 쓰므로)
+# 이게 조합보다 훨씬 빠름!!! (why?조합은 재귀를 쓰므로, 오래걸린다..)
 
 # 만약 nCr 에서 r이 정해진 상황이라면
-# 조합 자체를 쓰기보다는 이렇게 or 비트마스킹!!
+# 조합 자체를 쓰기보다는 이렇게 for문 중첩으로 구현하자
 for i in range(0, N-1):
     for j in range(i+1, N):
         edge_distance = calc_distance(coord[i][0], coord[i][1], coord[j][0], coord[j][1])
