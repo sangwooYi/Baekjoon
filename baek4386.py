@@ -60,8 +60,7 @@ answer = 0
 for i in range(0, len(distance)):
     cost, a, b = distance[i]
 
-    # 아직 서로 부모노드가 안겹칠때만(아직 연결 안된것)
-    if (find(a) != find(b)):
+    # 아직 서로 부모노드가 안겹칠때만(아직 연결 안된것)g
         union(a, b)
         answer += cost
 print(answer)
