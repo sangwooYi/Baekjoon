@@ -30,6 +30,8 @@ def find_prime(n):
     return primes
 
 
+
+
 M, N = map(int, input().split())
 answer = find_prime(N)
 for i in range(0, len(answer)):
