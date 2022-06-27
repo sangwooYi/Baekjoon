@@ -26,6 +26,9 @@ ptr >= 가방갯수 or 보석 무게 > 가방[ptr]의 무게 인 경우:
 
 전략2.
 오히려 가방을 순회
+1. 현재 무게에 대해, 담을 수 있는 가방을 무게 순으로 최대힙 저장
+2. 그 후, 최대힙에 있는 자료가 있다면, 그 중 최대 무게의 보석만 현재 가방에 저장
+3. 이 작업을 끝날때까지 반복!
 """
 
 
@@ -47,18 +50,23 @@ juels.sort()
 bags.sort()
 answer = 0
 
+
 tmp = []
 for i in range(0, K):
     w = bags[i]
-    # 담을 수 있는 보석이 있는 경우
+    # 담을 수 있는 보석이 있는 경우 (juels가 남아있는 한에서, 현재 가방에 담을 수 있으면)
     while juels and w >= juels[0][0]:
         now = heapq.heappop(juels)
-        # 담을 수 있으면, 무게에 대해 최대 힙으로 저장
+
+        # 담을 수 있으면, 무게에 대해서만 최대 힙으로 저장
         heapq.heappush(tmp, -now[1])
-    # 담을 수 있는 경우에 대해서, 최대 무게 부터 체크
+
+    # 담을 수 있는 보석이 있다면, 그 보석중에 현재 가방에 최대 무게의 보석을 집어넣는다.
     if tmp:
+        # 현재 가방에 대해, 넣을 수 있는 보석이 있다면, 그중에서 최대 무게의 보석을 넣는다.
         answer -= heapq.heappop(tmp)
     # 만약 tmp 비어있는 상태에서 juels 가 없다면 종료 조건
     elif not juels:
         break
+
 print(answer)
