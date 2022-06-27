@@ -34,39 +34,33 @@ ptr >= 가방갯수 or 보석 무게 > 가방[ptr]의 무게 인 경우:
 
 
 N, K = map(int, input().split())
-juels = []
-bags = [0] * K
+jewels = [0] * N
 for i in range(0, N):
-    weight, value = map(int, sys.stdin.readline().split())
-    heapq.heappush(juels, (weight, value))
-
+    jewels[i] = list(map(int, sys.stdin.readline().split()))
+bags = [0] * K
 for i in range(0, K):
     bags[i] = int(sys.stdin.readline())
 
-# 보석 무게 오름차순
-juels.sort()
-
-# 가방 무게 오름차순
+# 보석, 가방 둘다 무게 오름차순으로 정렬
+jewels.sort()
+ptr = 0
 bags.sort()
+
+
+temp = []
 answer = 0
-
-
-tmp = []
 for i in range(0, K):
-    w = bags[i]
-    # 담을 수 있는 보석이 있는 경우 (juels가 남아있는 한에서, 현재 가방에 담을 수 있으면)
-    while juels and w >= juels[0][0]:
-        now = heapq.heappop(juels)
+    now = bags[i]
 
-        # 담을 수 있으면, 무게에 대해서만 최대 힙으로 저장
-        heapq.heappush(tmp, -now[1])
-
-    # 담을 수 있는 보석이 있다면, 그 보석중에 현재 가방에 최대 무게의 보석을 집어넣는다.
-    if tmp:
-        # 현재 가방에 대해, 넣을 수 있는 보석이 있다면, 그중에서 최대 무게의 보석을 넣는다.
-        answer -= heapq.heappop(tmp)
-    # 만약 tmp 비어있는 상태에서 juels 가 없다면 종료 조건
-    elif not juels:
-        break
-
+    # 보석이 남아있는 한에서, 가방에 담을 수 있는 보석 전부 temp에 저장
+    while ptr < N and jewels[ptr][0] <= now:
+        w, v = jewels[ptr]
+        ptr += 1
+        heapq.heappush(temp, -v)
+    # temp에 저장된 보석이 있다면, 현재 가방에 temp에 보석중 최대 무게의 보석을 저장
+    # 그러면 현재 가방에는 가능한 최대의 가치가 들어가게 된것!
+    if temp:
+        value = -heapq.heappop(temp)
+        answer += value
 print(answer)
+
