@@ -25,16 +25,12 @@ M = int(input())
 arr2 = list(map(int, input().split()))
 
 
-tmp_sum1 = [[0] * N for _ in range(0, N)]
-
-tmp_sum2 = [[0] * M for _ in range(0, M)]
 arr1_dict = {}
 arr2_dict = {}
 for i in range(0, N):
     temp = 0
     for j in range(i, N):
         temp += arr1[j]
-        tmp_sum1[i][j] = temp
         if temp in arr1_dict.keys():
             arr1_dict[temp] += 1
         else:
@@ -43,7 +39,6 @@ for i in range(0, M):
     temp = 0
     for j in range(i, M):
         temp += arr2[j]
-        tmp_sum2[i][j] = temp
         if temp in arr2_dict.keys():
             arr2_dict[temp] += 1
         else:
