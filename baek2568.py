@@ -30,49 +30,54 @@ lines = [0] * N
 
 check = {}
 for i in range(0, N):
-    lines[i] = list(map(int, sys.stdin.readline().split()))
-    # B 전봇대 - 인덱스
-    check[lines[i][1]] = i
+    # list(map())보다 그냥 이렇게 구조분해 할당하는것이 더 효율적이다!
+    # why? list로 변환하는데 또 추가적인 시간이 필요하기 때문!
+    a, b = map(int, sys.stdin.readline().split())
+    lines[i] = (a, b)
 lines.sort()
 
 LIS = [lines[0][1]]
-record = [0] * N
-record[0] = [0, lines[0][1]]
-for i in range(1, N):
+DP = [-1] * N
+for i in range(0, N):
     a, b = lines[i]
     # LIS의 마지막요소와 비교하여 LIS가 유지되면 그냥 추가
-    if LIS[-1] <= b:
+    if LIS[-1] < b:
         LIS.append(b)
-        record[i] = [len(LIS), lines[i][1]]
-    # LIS[-1] > b라면 b가 들어갈 적절한 위치를 찾아 요소를 대체해줌
-    pl = 0
-    pr = len(LIS)-1
-    while pl < pr:
-        pc = (pl+pr)//2
+        DP[i] = max(DP)+1
+    else:
+        # LIS[-1] > b라면 b가 들어갈 적절한 위치를 찾아 요소를 대체해줌
+        pl = 0
+        pr = len(LIS)-1
+        while pl <= pr:
+            pc = (pl+pr)//2
 
-        if LIS[pc] >= b:
-            pr = pc
+            if LIS[pc] >= b:
+                pr = pc-1
+            else:
+                pl = pc+1
+        if b > LIS[pl]:
+            LIS[-1] = b
         else:
-            pl = pc+1
-    LIS[pr] = b
-    record[i] = [pr, lines[i][1]]
-
-
-temp = [0] * len(LIS)
-now = len(LIS)-1
-idx = 0
-for i in range(N-1, -1, -1):
-    if record[i][0] == now:
-        temp[idx] = record[i][1]
-        idx += 1
-        now -= 1
-    if now < 0:
-        break
-visited = [False] * N
-for i in range(0, len(temp)):
-    visited[check[temp[i]]] = True
+            LIS[pl] = b
+            DP[i] = pl+1
 
 print(N-len(LIS))
+
+now = len(LIS)
+w = []
+r = len(LIS)
+
+for i in range(N-1, -1, -1):
+    if r == 0:
+        break
+    if DP[i] == r:
+        w.append(lines[i])
+        r -= 1
+
+c = []
 for i in range(0, N):
-    if not visited[i]:
-        print(lines[i][0])
+    if lines[i] not in w:
+        c.append(lines[i])
+c.sort(key=lambda x : x[0])
+for i in range(0, N-len(LIS)):
+    print(c[i][0])
