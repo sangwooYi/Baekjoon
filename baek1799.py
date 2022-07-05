@@ -40,7 +40,7 @@ def bishop(arr, diag, count, n):
     if ub + count <= max_count:
         return
     for y in range(0, diag+1):
-        x = diag-y  # x+y = diag (대    각선 번호)
+        x = diag-y  # x+y = diag (대각선 번호)
         if 0 <= x < n and 0 <= y < n and arr[y][x] and rd[x-y] == 0:
             rd[x-y] = 1
             bishop(arr, diag+1, count+1, n)
