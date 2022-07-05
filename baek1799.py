@@ -39,8 +39,9 @@ def bishop(arr, diag, count, n):
     # 앞으로 더 두어봤자 현재까지의 최댓값보다 작을 경우는 더 볼 필요 X
     if ub + count <= max_count:
         return
+    # y가 row x가 col
     for y in range(0, diag+1):
-        x = diag-y  # x+y = diag (대각선 번호)
+        x = diag-y  # x+y = diag (대각선 번호) , 우하향 대각선까지 체크
         if 0 <= x < n and 0 <= y < n and arr[y][x] and rd[x-y] == 0:
             rd[x-y] = 1
             bishop(arr, diag+1, count+1, n)
