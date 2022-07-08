@@ -113,6 +113,7 @@ def lowerBound(arr, key):
             pr = pc
         else:
             pl = pc + 1
+    return pl
 
 # 위와 같이 코드 짜게 되면
 # lower bound 의 경우는 정말 해당 값이 존재하는 가장 낮은 인덱스값에서 멈추고
