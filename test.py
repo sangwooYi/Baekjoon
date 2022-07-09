@@ -267,3 +267,27 @@ pool 리스트의 요소인 y가 [y] 형태로 더해져서 x 리스트의 y 요
 리스트가 요소로 생성되는것
 """
 
+
+
+"""
+참고. 파이썬에서 상속
+
+class Person:
+    def __init__(name, age):
+        self.name = name
+        self.age = age
+
+    .. 생략
+
+
+// 파이썬에서 상속은 사실 이게 끝이다. 이러면 알아서 부모의 필드, 메서드를 사용 가능함
+class Student(Person):
+
+다만 __init__에서, 부모의 생성자를 이용해 선언하고 싶다면 super().__init__사용
+
+파이썬에서 super()자체가, 부모의 메서드, 필드에 직접 접근하는 용도로 사용됨
+class Student(Person):
+    def __init__(name, age, score):
+        super().__init__(name, age)     //이런식으로 하면 부모의 생성자를 이용해 init 선언 가능
+        self.score = score
+"""
