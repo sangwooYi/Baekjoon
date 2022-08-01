@@ -81,11 +81,28 @@ def calc_area(arr, size):
             max_area = max(max_area, tmp_area)
 
 """
-part1  part2
+각 부분 격자가 제자리에서 90도 회전만 시키는 것이다! (문제를 잘 이해할 것.)
 
-part3  part4
+위 그림처럼 그냥 부분 격자를 
 
-각 격자가 90도 회전되어 이동하는것이다!
+내가 처음 참고한 풀이보다
+아래 풀이가 더 직관적임! (이런 아이디어를 낼 수 있어야 한다.)
+두 풀이다 완벽하게 이해할 것
+'''
+1 2             3 1
+3 4             4 2
+↑로 읽고         →로 쓰면
+90도 회전
+'''
+for r in range(l):
+    for c in range(l):
+        # read ↑
+        temp[r][c] = board[cur_r + l - 1 - c][cur_c + r]
+
+for r in range(l):
+    for c in range(l):
+        # write →
+        board[cur_r + r][cur_c + c] = temp[r][c]
 """
 def tornado(arr, n, size):
     # 격자 회전
@@ -99,6 +116,7 @@ def tornado(arr, n, size):
                 for i in range(0, term):
                     for j in range(0, term):
                         # j번쨰 열은 j번쨰 행으로, i번째 행은 term-i번째 열이 되는것
+                        # 그냥 제자리에서 부분격자만 90도 회전시키는것이다! (이동없음!)
                         temp[row+j][col+term-1-i] = arr[row+i][col+j]
 
         arr = temp
