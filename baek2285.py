@@ -46,6 +46,7 @@ for i in range(0, N):
     pos, num = A[i]
     count += num
     answer = pos
+    # 누적합이 처음으로 전체 인구의 절반이 넘어가는 순간 break
     if count > total//2:
         break
 print(answer)
