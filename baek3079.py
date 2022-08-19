@@ -18,7 +18,7 @@ for i in range(0, N):
 
 # 가능한 최소 시간
 left = min(tasks)
-# 가능한 최대 시간
+# 가능한 최대 시간 (이거와 아래 mid//tasks[i] 이 두가지가 핵심 포인트!)
 right = max(tasks)*M
 answer = right
 
@@ -26,7 +26,7 @@ while left <= right:
     mid = (left+right) // 2
     tmp = 0
     for i in range(0, N):
-        # 해당 시간동안 처리할 수 있는 사람 수
+        # 해당 시간동안 처리할 수 있는 사람 수 (이 부분이 핵심이다!)
         tmp += (mid // tasks[i])
 
     # 목표 달성

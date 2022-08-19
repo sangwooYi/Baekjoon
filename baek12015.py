@@ -8,7 +8,7 @@ LIS를 nlogn 으로 탐색하는 방법
 이하의 값이 들어오면 lower bound로 LIS에서 현재 값 이상의 값이 나오는 '처음'위치를 찾아 교체
 
 lower bound: 찾으려는 값 '이상' 값이 처음 나오는 위치 (따라서 찾으려는 값(arr[pc] == key)이 나와도 pr = pc - 1로 갱신)
-lower bound: 찾으려는 값보다 '큰'값이 처음 나오는 위치 (따라서 찾으려는 값이 나와도 pl = pc + 1로 갱신)
+upper bound: 찾으려는 값보다 '큰'값이 처음 나오는 위치 (따라서 찾으려는 값이 나와도 pl = pc + 1로 갱신)
 
 
 def lower_bound(arr, key):
