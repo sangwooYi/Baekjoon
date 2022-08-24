@@ -18,7 +18,7 @@ class Stack:
         self.stk = [0] * self.max
         self.data = 0
         self.ptr = 0
-
+    
     def push(self, x):
         if self.data >= self.max:
             raise IndexError
