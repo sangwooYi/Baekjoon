@@ -19,8 +19,8 @@ for i in range(0, N):
 # 초깃값 세팅
 # DP[i][j] i구간을 j시간까지 가는데까지의 최대 모금 금액
 DP = [[0] * (K+1) for _ in range(0, N+1)]
-DP[1][walking[0][0]] = walking[0][1]
-# 위에 walking에서 동일한 시간에서 더 많은 금액을 가져오는 input이 들어올 수도 있다. (예외처리)
+# 그냥 혹시나 하는 예외처리를 위해 이렇게 그냥 세팅하자
+DP[1][walking[0][0]] = max(DP[1][walking[0][0]], walking[0][1])
 DP[1][cycling[0][0]] = max(DP[1][cycling[0][0]], cycling[0][1])
 
 # 2부터 진행, N이 최대 100까지이므로 이런식의 로직도 충분히 가능!
