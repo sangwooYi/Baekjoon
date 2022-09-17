@@ -1,6 +1,11 @@
 import sys
 sys.stdin = open("baek1414.txt")
 
+"""
+크루스칼 사용
+
+(출발 노드 정해져있으면 프림, 아니면 크루스칼!)
+"""
 
 def find(x):
     if parent[x] == x:
@@ -68,10 +73,10 @@ for edge in edges:
         min_req += cost
 
 
-# 모든 연결이 안된 경우
 root = find(0)
 flag = True
 for i in range(1, N):
+    # 모든 연결이 안된 경우
     if find(i) != root:
         flag = False
         break
