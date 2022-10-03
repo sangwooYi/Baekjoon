@@ -65,22 +65,19 @@ for i in range(1, N):
     else:
         pl = 0
         pr = len(LIS)-1
-
-        while pl <= pr:
+        # lower bound는 이게 맞다!
+        while pl < pr:
             pc = (pl+pr)//2
             # 다른조건은동일, lower bound는 조건 == arr[pc] 일지라도 우측 범위를 줄이고,
             # upper bound는 조건 == arr[pc] 일지라도 왼쪽 범위를 줄이는게 끝! (목표는 위에 주석 설명을 참고)
             # 그냥 값 자체를 찾는것은 조건 == arr[pc]인 순간 종료
             if LIS[pc] >= num:
-                pr = pc-1
+                pr = pc
             else:
                 pl = pc+1
         # 그냥 가장 끝범위에 와야하는 경우
-        if num > LIS[pl]:
-            LIS[-1] = num
-        else:
-            LIS[pl] = num
-            DP[i] = pl
+        LIS[pl] = num
+        DP[i] = pl
 
 lis_len = len(LIS)
 
