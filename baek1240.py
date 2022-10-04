@@ -4,7 +4,6 @@ sys.stdin = open("baek1240.txt")
 
 
 """
-
 """
 
 def bfs(start, end):
