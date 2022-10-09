@@ -83,17 +83,17 @@ for i in range(1, N+1):
     hq = []
     path = 0
     for c, n in graph[i]:
-        visited[n] = True
         heapq.heappush(hq, (c, n))
     
     while hq:
         cost, node = heapq.heappop(hq)
+        if visited[node]:
+            continue
+        visited[node] = True
         path += cost
-
         for next_cost, next_node in graph[node]:
             if visited[next_node]:
                 continue
-            visited[next_node] = True
             heapq.heappush(hq, (next_cost, next_node))
     # 기존 min_path 값보다 작은 값이 나왔다면 갱신
     if path < min_path:
