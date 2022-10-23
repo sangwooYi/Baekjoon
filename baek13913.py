@@ -68,4 +68,5 @@ answer = hide_and_seek(N, K)
 
 print(answer)
 # 역추적할때 이거 잘 기억하자, 여기서 *의 역할은 unpacking! arr = [1, 2, 3, 4] => *arr = 1 2 3 4 로 출력해주는게 *역할
+# [::-1] 의 역할은 해당 배열을 거꾸로 만들어주는 역할!
 print(*path[::-1])
