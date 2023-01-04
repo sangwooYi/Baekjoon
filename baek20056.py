@@ -13,7 +13,8 @@ s : 속도
 그 뒤 4개로 나뉨 (예시를 통해 체크 필요한 문제
 1. 그냥 4개로 쪼개지고 원래위치에는 안남는다.  2. 무게는 소숫점은 버림으로 진행)
 나뉠때 각 질량은 총합//5 , 속도는 총합//합쳐진수 질량 0 이하되면 그냥 소멸
-합쳐지는 방향이 모두 홀or 짝이면 0246으로 // 아니면 1357로 쪼개짐
+합쳐지는 방향이 모두 홀or 짝이면 0246으로 // 아니면 1357로 쪼개짐 
+=> 쪼개지기만하고 이동은 안한다!
 
 주의할점은 1행과 N행이 // 1열과 N열이 연결된 상태라는것 (즉 경계선이 없다.....)
 => 즉 이동할때마다 속도//맵크기를 통해 실제로 이동하게 되는 칸 수를 반드시 체크해 주어야 함
@@ -60,17 +61,10 @@ def set_next_stage_arr(arr):
                         continue
                     valid_s = s_total//len(arr[row][col])
 
-                    valid_s %= N
                     # 0 2 4 6
                     if flag:
                         for dir in range(0, 8, 2):
-                            next_row = row + dr[dir]*valid_s
-                            next_col = col + dc[dir]*valid_s
-
-                            next_row = conv_valid_point(next_row)
-                            next_col = conv_valid_point(next_col)
-
-                            out_arr.append((next_row, next_col, valid_m, valid_s, dir))
+                            out_arr.append((row, col, valid_m, valid_s, dir))
                     # 1 3 5 7
                     else:
                         for dir in range(1, 8, 2):
@@ -79,7 +73,7 @@ def set_next_stage_arr(arr):
 
                             next_row = conv_valid_point(next_row)
                             next_col = conv_valid_point(next_col)
-                            out_arr.append((next_row, next_col, valid_m, valid_s, dir))
+                            out_arr.append((row, col, valid_m, valid_s, dir))
                 # 1개 뿐일때
                 else:
                     out_arr.append((row, col, f_m, f_s, f_d))
