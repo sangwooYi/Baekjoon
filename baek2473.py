@@ -1,16 +1,6 @@
 import sys
 sys.stdin = open("baek2473.txt")
 
-"""
-전략 1.
-하나는 그냥 최대한 0에 가까운 친구로
-나머지는 투포인터로해서 가장 절댓값이 작아진 경우로
-=> 반례는 -5 -1 2 3 4 이렇게 주어진 경우 -5, 2, 3을 골라야 한다.
-포인트 1개를 순회한다면??
-5000 * 5000 = 250만ㅇ이라서 가능!
-이렇게범위에 따른 복잡도 추론이 가능해야한다.
-"""
-
 
 N = int(input())
 solutions = list(map(int, input().split()))
@@ -18,7 +8,6 @@ solutions.sort()
 
 
 # point1 은 가장 절댓값 작은애로 체크 (어차피 최대 5000회다)
-visited = [False] * N
 min_sum = solutions[0] + solutions[1] + solutions[N-1]
 pt1 = 1
 pt2 = 0
