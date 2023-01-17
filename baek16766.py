@@ -10,6 +10,8 @@ sys.stdin = open("baek16766.txt")
 다음 버스를 타는 것
 그리고 만약 위 조건이 아니라도 정원 C가 되었으면 다음 버스 탑승
 
+위 조건에서 필요한 버스 수가 M 보다 크면 => 범위를 키워야 함 (너무 작게 잡았음)
+M 이하이면, 범위를 줄인다 (최대 대기시간의 최솟값을 찾아야 하므로)
 """
 
 N, M, C = map(int, sys.stdin.readline().split())
@@ -45,6 +47,7 @@ while left < right:
     # 너무 작은 범위를 설정함, 범위를 키워야 한다.
     if bus_cnt > M:
         left = mid+1
+    # 범위를 늘린다.
     else:
         right = mid
 print(left)
