@@ -1,5 +1,5 @@
-num1 = 472
-num2 = "385"
+num1 = int(input())
+num2 = input()
 
 for i in range(2, -1, -1):
     cur_num = int(num2[i])
