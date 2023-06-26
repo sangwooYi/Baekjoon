@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit((10**5)*5)
 sys.stdin = open("baek15900.txt")
 
 

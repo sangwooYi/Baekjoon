@@ -17,3 +17,4 @@ idx_arr.sort()
 print(total_score)
 print(" ".join(map(str, idx_arr)))
 
+
