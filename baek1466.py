@@ -6,10 +6,6 @@ sys.stdin = open("baek1466.txt")
 그냥 DP 문제다..
 DP 문제도 다시 풀어보자
 """
-
-
-
-INF = 987654321
 N, D = map(int, input().split())
 DP = [i for i in range(0, D+1)]
 
