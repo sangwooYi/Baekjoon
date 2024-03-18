@@ -11,7 +11,6 @@ for i in range(0, N):
 
 
 schedules.sort()
-\
 
 hq = []
 for i in range(0, N):
